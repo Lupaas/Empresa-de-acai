@@ -28,9 +28,22 @@
     document.querySelectorAll(".etapa").forEach(function (e) {
       e.classList.remove("ativa");
     });
-    document.getElementById(idEtapa).classList.add("ativa");
+
+    // Garante que só a etapa solicitada fique visível
+    var alvo = document.getElementById(idEtapa);
+    if (alvo) alvo.classList.add("ativa");
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  // Força o estado inicial: somente Home (oculta cliente por padrão)
+  // (evita que alguma marcação/estilo inicial deixe a etapa cliente visível)
+  document.querySelectorAll(".etapa").forEach(function (e) {
+    e.classList.remove("ativa");
+  });
+  var etapaInicial = document.getElementById("etapa-home");
+  if (etapaInicial) etapaInicial.classList.add("ativa");
+
 
   // ── ETAPA 1: Cardápio ───────────────────────────────────────────────────────
   const listaCardapio = document.getElementById("lista-itens");
@@ -91,26 +104,80 @@
       alert("Selecione pelo menos um item do cardápio!");
       return;
     }
-    irPara("etapa-cliente");
+
+    // Abre modal com os dados do cliente (ao invés de mostrar a etapa completa)
+    var modal = document.getElementById("modal-dados-cliente");
+    if (modal) modal.hidden = false;
   });
 
-  // ── ETAPA 2: Cliente ────────────────────────────────────────────────────────
-  document.getElementById("btn-voltar-cardapio").addEventListener("click", function () {
+
+
+  // ── ETAPA 2: Cliente (agora via modal) ──────────────────────────────────────
+  var modalDados = document.getElementById("modal-dados-cliente");
+
+  function esconderModalDados() {
+    if (modalDados) modalDados.hidden = true;
+  }
+
+  function abrirModalDados() {
+    if (modalDados) modalDados.hidden = false;
+  }
+
+  document.getElementById("modal-dados-fechar").addEventListener("click", function () {
+    esconderModalDados();
     irPara("etapa-cardapio");
   });
 
-  document.getElementById("btn-ir-carrinho").addEventListener("click", function () {
-    const nome = document.getElementById("nome-cliente").value.trim();
-    const tipo = document.getElementById("tipo-cliente").value;
-    const erro = document.getElementById("erro-cliente");
-    if (!nome) { erro.textContent = "⚠ Informe seu nome."; return; }
-    if (!tipo) { erro.textContent = "⚠ Selecione o tipo de cliente."; return; }
+  document.getElementById("modal-dados-continuar").addEventListener("click", function () {
+    const nome = document.getElementById("nome-cliente-modal").value.trim();
+    const tipo = document.getElementById("tipo-cliente-modal").value;
+    const erro = document.getElementById("erro-cliente-modal");
+
+    if (!nome) {
+      erro.textContent = "⚠ Informe seu nome.";
+      return;
+    }
+    if (!tipo) {
+      erro.textContent = "⚠ Selecione o tipo de cliente.";
+      return;
+    }
+
     erro.textContent = "";
     cliente.nome = nome;
     cliente.tipo = tipo;
+
+    esconderModalDados();
     renderizarCarrinho();
-    irPara("etapa-carrinho");
+
+    // Exibe o carrinho como modal
+    abrirModalCarrinho();
   });
+
+
+  // Versão antiga da etapa cliente dentro da mesma página (mantida para compatibilidade)
+  var btnVoltarClienteAntigo = document.getElementById("btn-voltar-cardapio");
+  if (btnVoltarClienteAntigo) {
+    btnVoltarClienteAntigo.addEventListener("click", function () {
+      irPara("etapa-cardapio");
+    });
+  }
+
+  var btnIrCarrinhoAntigo = document.getElementById("btn-ir-carrinho");
+  if (btnIrCarrinhoAntigo) {
+    btnIrCarrinhoAntigo.addEventListener("click", function () {
+      const nome = document.getElementById("nome-cliente").value.trim();
+      const tipo = document.getElementById("tipo-cliente").value;
+      const erro = document.getElementById("erro-cliente");
+      if (!nome) { erro.textContent = "⚠ Informe seu nome."; return; }
+      if (!tipo) { erro.textContent = "⚠ Selecione o tipo de cliente."; return; }
+      erro.textContent = "";
+      cliente.nome = nome;
+      cliente.tipo = tipo;
+      renderizarCarrinho();
+      irPara("etapa-carrinho");
+    });
+  }
+
 
   // ── ETAPA 3: Carrinho ───────────────────────────────────────────────────────
   function calcularTotais() {
@@ -163,11 +230,23 @@
     renderizarCarrinho();
   });
 
+  var modalCarrinho = document.getElementById("modal-carrinho");
+
+  function abrirModalCarrinho() {
+    if (modalCarrinho) modalCarrinho.hidden = false;
+  }
+
+  function fecharModalCarrinho() {
+    if (modalCarrinho) modalCarrinho.hidden = true;
+  }
+
   document.getElementById("btn-voltar-cliente").addEventListener("click", function () {
+    fecharModalCarrinho();
     irPara("etapa-cardapio");
   });
 
   document.getElementById("btn-finalizar").addEventListener("click", function () {
+
     if (Object.keys(carrinho).length === 0) {
       alert("Adicione itens ao carrinho!");
       return;
@@ -193,13 +272,32 @@
   document.getElementById("modal-confirmar-btn").addEventListener("click", function () {
     document.getElementById("modal-confirmar").hidden = true;
     document.getElementById("total-pagamento").textContent = formatarPreco(calcularTotais().total);
-    irPara("etapa-pagamento");
+
+    // fecha carrinho modal ao ir para pagamento
+    fecharModalCarrinho();
+
+    // abre modal de pagamento ao invés de navegar para a seção
+    abrirModalPagamento();
   });
 
-  // ── ETAPA 4: Pagamento ──────────────────────────────────────────────────────
+
+
+  // ── ETAPA 4: Pagamento (agora em modal) ─────────────────────────────────────
+  var modalPagamento = document.getElementById("modal-pagamento");
+
+  function abrirModalPagamento() {
+    if (modalPagamento) modalPagamento.hidden = false;
+  }
+
+  function fecharModalPagamento() {
+    if (modalPagamento) modalPagamento.hidden = true;
+  }
+
   document.getElementById("btn-voltar-carrinho").addEventListener("click", function () {
-    irPara("etapa-carrinho");
+    fecharModalPagamento();
+    abrirModalCarrinho();
   });
+
 
   document.querySelectorAll(".btn-pgto").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -211,7 +309,12 @@
       document.getElementById("status-pedido").textContent    = "⏳ Preparando seu pedido...";
       document.getElementById("btn-novo-pedido").hidden       = true;
       document.getElementById("status-sheets").textContent    = "";
-      irPara("etapa-senha");
+
+      // fecha modal pagamento e abre modal senha
+      fecharModalPagamento();
+      var modalSenha = document.getElementById("modal-senha");
+      if (modalSenha) modalSenha.hidden = false;
+
 
       // ── Monta o objeto do pedido ──────────────────────────────────────────
       const totais = calcularTotais();
@@ -263,15 +366,25 @@
   });
 
   // ── ETAPA 5: Novo pedido ────────────────────────────────────────────────────
+  var modalSenha = document.getElementById("modal-senha");
+
   document.getElementById("btn-novo-pedido").addEventListener("click", function () {
+    if (modalSenha) modalSenha.hidden = true;
+
     carrinho        = {};
+
     cliente         = { nome: "", tipo: "" };
     formaPagamento  = "";
     document.getElementById("nome-cliente").value  = "";
     document.getElementById("tipo-cliente").value  = "";
     atualizarCards();
+    esconderModalDados();
+    fecharModalCarrinho();
+    fecharModalPagamento();
+    if (modalSenha) modalSenha.hidden = true;
     irPara("etapa-cardapio");
   });
+
 
   // ── Histórico local ─────────────────────────────────────────────────────────
   const CHAVE_LS = "acai_pedidos";
