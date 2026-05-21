@@ -9,6 +9,6 @@ const ITENS = [
 // Descontos por tipo de cliente
 const DESCONTOS = {
   "N": 0,     // Comum
-  "P": 0.10,  // Preferencial
+  "P": 0.20,  // Preferencial
   "V": 0.15   // VIP
 };

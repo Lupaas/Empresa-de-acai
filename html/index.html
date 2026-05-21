@@ -18,7 +18,7 @@
     <div class="container header-inner">
       <a href="#" class="logo">
         <img src="../img/logo-acai-recortada.png" alt="logo-acai-recortada"
-          style="max-height: 115px; max-width: 130px; border-radius: 20px;">
+          style="max-height: 250px; max-width: 150px; border-radius: 20px;">
       </a>
       <nav class="navbar" aria-label="Menu principal">
         <!-- Botão para Mobile -->
@@ -40,49 +40,78 @@
   <!-- ════════════════════════════ CONTEÚDO ════════════════════════════ -->
   <main id="conteudo">
 
-    <!-- ── ETAPA 1: Cardápio ── -->
-    <section id="etapa-cardapio" class="etapa ativa" aria-label="Cardápio">
+    <!-- ── ETAPA 1: Home da página ── -->
+    <section id="etapa-home" class="etapa ativa" aria-label="Home da página">
       <div class="hero">
-        <div class="container">
-          <h1>AçaíZon</h1>
-          <p class="lead">Energia gelada para todos os momentos!</p><br>
-          <a class="btn" href="#cardapio">Ver cardápio</a>
+        <div class="hero-box">
+          <div class="hero-texto">
+            <!-- IMAGEM DE FUNDO -->
+            <img src="../img/acaizon_imagem_fundo.png" alt="Imagem de fundo com tigela de açaí e frutas"
+              class="hero-bg">
+            <h1>SABOR QUE <span>TE ENERGIZA</span></h1>
+            <p class="lead">Açaí puro, cremoso e com os
+              melhores acompanhamentos para transformar o
+              seu dia!
+            </p>
+            <a class="btn btn-cardapio" href="#cardapio">Peça Agora</a>
+          </div>
         </div>
-      </div>
+      </div><br>
 
 
-      <!-- ── SOBRE NÓS ── -->
-      <section id="sobre" class="section" aria-labelledby="sobre-title">
+      <section id="beneficios" class="beneficios">
         <div class="container">
-          <div class="card">
-            <div class="box">
-              <div class="content">
-                <h2 id="sobre-title">Sobre Nós</h2>
-                <p>O Açaízon nasceu da vontade de transformar o açaí —
-                  fruto que carrega a essência da nossa cultura — em uma experiência de sabor,
-                  energia e identidade. A ideia veio de querer levar esse ingrediente tão tradicional a
-                  outro nível, valorizando suas raízes e o que ele representa. Hoje, seguimos com o mesmo
-                  propósito: entregar qualidade, criatividade e muito sabor em cada tigela.</p>
+          <div class="beneficios-container">
+            <div class="beneficio-card">
+              <h3>Entrega Rápida</h3>
+              <i class="fas fa-motorcycle"></i>
+              <p>Seu açaí chega geladinho até você!</p>
+            </div>
+
+            <div class="beneficio-card">
+              <h3>Embalagens ecológicas</h3>
+              <i class="fas fa-leaf"></i>
+              <p>Mais cuidado com o planeta.</p>
+            </div>
+
+            <div class="beneficio-card">
+              <h3>Ingredientes selecionados</h3>
+              <i class="fas fa-thumbs-up"></i>
+              <p>Frutas frescas e toppings premium.</p>
+            </div>
+
+            <div class="beneficio-card">
+              <h3>Feito com amor</h3>
+              <i class="fas fa-heart"></i>
+              <p>Cada tigela é preparada com carinho.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section><br></br>
+
+
+    <section id="cardapio" class="cardapio" aria-labelledby="cardapio-title">
+      <div class="container">
+        <div class="cardapio-container">
+          <div class="cardapio-card">
+            <div class="cardapio-box">
+              <h2>Cardápio</h2>
+              <p>Escolha seus sabores favoritos!</p>
+              <ul class="cards" id="lista-itens" aria-label="Itens do cardápio"></ul>
+              <div class="acoes-etapa">
+                <button class="btn" id="btn-ir-cliente">Continuar →</button>
               </div>
             </div>
           </div>
-        </div><br>
-      </section>
-
-      <section id="cardapio" class="section section--alt">
-        <div class="container">
-          <h2>Cardápio</h2>
-          <ul class="cards" id="lista-itens" aria-label="Itens do cardápio"></ul>
-          <div class="acoes-etapa">
-            <button class="btn" id="btn-ir-cliente">Continuar →</button>
-          </div>
         </div>
-      </section>
+      </div>
+    </section><br></br>
 
     </section><!-- fim #etapa-cardapio -->
 
     <!-- ── FALE CONOSCO ── -->
-    <section id="contato" class="section" aria-labelledby="contato-title">
+    <!-- <section class="contato" aria-labelledby="contato-title">
       <div class="container">
         <div class="card">
           <div class="box">
@@ -111,7 +140,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section>  -->
 
 
     <!-- ── ETAPA 2: Dados do cliente ── -->
@@ -130,7 +159,7 @@
                 <select id="tipo-cliente" required>
                   <option value="">Selecione...</option>
                   <option value="N">N — Comum</option>
-                  <option value="P">P — Preferencial (10% desc.)</option>
+                  <option value="P">P — Preferencial (20% desc.)</option>
                   <option value="V">V — VIP (15% desc.)</option>
                 </select>
               </div>
@@ -198,10 +227,10 @@
   </main>
 
   <!-- ════════════════════ HISTÓRICO DE PEDIDOS ════════════════════ -->
-  <section id="historico-section" class="section section--alt">
+  <section id="historico-section" class="historico" aria-label="Histórico de pedidos">
     <div class="container">
 
-      <!-- Aviso de configuração do Google Sheets -->
+      <!-- Aviso de configuração do Google Sheets
       <div class="aviso-sheets" id="aviso-sheets">
         <strong>📊 Como registrar vendas no Google Sheets:</strong><br>
         1. Crie uma planilha em <a href="https://sheets.google.com" target="_blank"
@@ -212,20 +241,22 @@
           pessoa</em>.<br>
         4. Copie a URL gerada e cole na constante <code>SHEETS_URL</code> dentro de <code>js/sheets.js</code>.<br>
         <em>Enquanto isso, todos os pedidos ficam salvos localmente (abaixo) e podem ser exportados como CSV.</em>
-      </div>
+      </div> -->
 
-      <div class="historico-cabecalho">
-        <h2>📋 Histórico de pedidos</h2>
-        <div class="historico-acoes">
-          <button class="btn btn-secundario" id="btn-exportar-csv" hidden>⬇ Exportar CSV</button>
-          <button class="btn btn-perigo btn-limpar" id="btn-limpar-historico">🗑 Limpar histórico</button>
+      <div class="historico-container">
+        <div class="historico-card">
+          <div class="historico-box">
+              <h2>📋 Histórico de pedidos</h2>
+              <div class="historico-acoes">
+                <button class="btn btn-secundario" id="btn-exportar-csv" hidden>⬇ Exportar CSV</button>
+                <button class="btn btn-perigo btn-limpar" id="btn-limpar-historico">🗑 Limpar histórico</button>
+              </div><br>
+            <div class="tabela-wrapper" id="historico-lista">
+              <p class="muted carrinho-vazio">Nenhum pedido registrado ainda.</p>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="tabela-wrapper" id="historico-lista">
-        <p class="muted carrinho-vazio">Nenhum pedido registrado ainda.</p>
-      </div>
-
     </div>
   </section>
 
@@ -252,10 +283,10 @@
     <div class="container">
       <p>© <span id="ano"></span> AçaíZon. Projeto educacional — Feito por <strong>Script Sisters</strong> 🔗</p>
       <div class="social-links">
-      <a href="https://www.instagram.com/luhpns/" class="social-icon"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-      <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-    </div>
+        <a href="https://www.instagram.com/luhpns/" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+      </div>
     </div>
   </footer>
 
