@@ -1,3 +1,11 @@
+/* Add as cores de cada conatiner */
+/* finalizar o footer */
+/* Se possivel, arrumar os beneficios para algo unico */
+/* Acresentar uma transição para aumentar a imagem no hero */
+/* mudar a cor dos botões */
+/* colocar um degrade no fundo */
+
+
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 /* === Tokens === */
 :root {
@@ -45,11 +53,12 @@ body {
 
 .beneficio-card {
   width: 250px;
-  height: 190px;
+  height: 195px;
   background: var(--cor-superficie);
   padding: 3px 2px;
   border-radius: 30px;
   text-align: center;
+  margin-top: 26px;
 }
 
 .beneficio-card p {
@@ -76,6 +85,7 @@ body {
   background: var(--cor-superficie);
   border-radius: var(--raio);
   padding: 1.5rem;
+  margin-top: 26px;
 }
 
 .cardapio-card p {
@@ -84,60 +94,113 @@ body {
   margin-bottom: 25px;
 }
 
-.promo-desconto {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin: 50px auto;
-  border-radius: 25px;
-  overflow: hidden;
-}
-
-.promo-desconto img {
-  width: 100%;
-  display: block;
+/* ANUNCIO DE DESCONTO */
+.anuncio img{
+  width: 1060px;
+  height: auto;
   object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: .75rem;
+  display: flex;
+  margin-top: -100px;
 }
 
-.promo-overlay {
+.btn-anuncio {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-505, 50%);
-  text-align: center;
+  top: -96px;
+  left: 63px;
+  width: 180px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
 
-.promo-overlay h2 {
-  color: white;
-  font-size: 48px;
-  margin-bottom: 20px;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+
+.anuncio-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.promo-overlay button {
-  background: #b8d430;
-  color: #2b124c;
-  border: none;
-  padding: 15px 35px;
-  border-radius: 50px;
-  font-size: 18px;
-  font-weight: bold;
+.anuncio-box {
+  position: relative;
+  min-height: 550px;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.anuncio {
+  margin-top: 30px;
+}
+
+/* SOBRE NÓS */
+.sobre-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.sobre-box {
+  position: relative;
+  min-height: 550px;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  top: -190px;
+}
+
+.sobre-card {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+  box-shadow: var(--sombra);
+  transition: transform .2s, border-color .2s;
   cursor: pointer;
-  transition: 0.5s;
+  margin-top: -20px;
+  width: 100%;
+
 }
 
-.promo-overlay button:hover {
-  transform: scale(1.05);
-  background: #d9ff66;
+.sobre-texto {
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  font-family: "Montserrat", inter, gotham, sans-serif;
 }
 
+/* CONTATO */
+.contato-container {
+  display: flex;
+  justify-content: center;
+}
+
+.contato-card {
+  width: 700px;
+  height: 590px;
+  background: var(--cor-superficie);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  margin-top: -170px;
+}
+
+
+/* CARRINHO */
 .carrinho-container {
   display: flex;
   justify-content: center;
 }
 
 .carrinho-card {
-  width: 100%;
+  width: auto;
   height: 100%;
   background: var(--cor-superficie);
   border-radius: var(--raio);
@@ -156,6 +219,7 @@ body {
   background: var(--cor-superficie);
   border-radius: var(--raio);
   padding: 1.5rem;
+  margin-top: 130px;
 }
 
 
@@ -185,6 +249,10 @@ body {
   width: 100%;
 }
 
+#sobre, #cardapio, #contato {
+  scroll-margin-top: 300px;
+}
+
 .logo {
   font-weight: 700px;
   font-size: 1.6rem;
@@ -209,7 +277,6 @@ body {
 /* === Hero === */
 .hero {
   padding: 20px;
-  background: var(--cor-fundo);
 }
 
 

@@ -104,14 +104,43 @@
           </div>
         </div>
       </div>
-    </section><br></br>
+    </section>
 
     <!-- ANÚNCIO DE CUPOM -->
-    <section class="promo-desconto">
-      <img src="../img/acai-anuncio-10.png" alt="Promoção de desconto">
-      <div class="promo-ovaley">
-        <h2>Torne-se VIP e Ganhe 10% OFF</h2>
-        <button>Pegas Cupom</button>
+    <section id="anuncio" class="anuncio" aria-label="Anuncio 10%">
+      <div class="anuncio-container">
+        <div class="anuncio-box">
+          <div class="anuncio-texto">
+            <!-- IMAGEM DE FUNDO -->
+            <img src="../img/acai-anuncio-10.png" alt="Imagem de anuncio de 10% de desconto" class="anuncio-bg">
+            <a class="btn btn-anuncio" href="#cardapio">Resgatar desconto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE NÓS -->
+    <section id="sobre" class="sobre" aria-label="Sobre Nós">
+      <div class="sobre-container">
+        <div class="sobre-box">
+          <div class="sobre-card">
+            <div class="sobre-texto">
+              <h2>Sobre Nós</h2>
+              <p>A AçaíZon nasceu da paixão por sabores autênticos e da vontade de trazer a energia da Amazônia para o
+                dia a dia das pessoas. Tudo começou com a ideia de criar um espaço onde o açaí fosse mais do que uma
+                sobremesa — uma experiência completa, cheia de qualidade, criatividade e boas lembranças.
+
+                Inspirados pelo sabor marcante do açaí e pela cultura brasileira, decidimos unir ingredientes
+                selecionados, receitas especiais e um atendimento acolhedor para criar algo único. Assim surgiu a
+                AçaíZon: uma marca feita para quem busca refrescância, sabor e momentos especiais a cada colherada.
+
+                Desde o primeiro atendimento, nosso objetivo sempre foi oferecer produtos de qualidade e conquistar
+                clientes não apenas pelo sabor, mas também pela experiência. Hoje, continuamos crescendo com a mesma
+                essência: paixão pelo açaí, dedicação em cada detalhe e compromisso em levar felicidade para cada
+                pedido.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -205,58 +234,11 @@
         </div>
       </div>
     </div>
-
-    <!-- ── FALE CONOSCO ── -->
-
-
-
-  </main>
-
-  <!-- ════════════════════ HISTÓRICO DE PEDIDOS ════════════════════ -->
-  <section id="historico-section" class="historico" aria-label="Histórico de pedidos">
-    <div class="container">
-      <div class="historico-container">
-        <div class="historico-card">
-          <div class="historico-box">
-            <h2>📋 Histórico de pedidos</h2>
-            <div class="historico-acoes">
-              <button class="btn btn-secundario" id="btn-exportar-csv" hidden>⬇ Exportar CSV</button>
-              <button class="btn btn-perigo btn-limpar" id="btn-limpar-historico">🗑 Limpar histórico</button>
-            </div><br>
-            <div class="tabela-wrapper" id="historico-lista">
-              <p class="muted carrinho-vazio">Nenhum pedido registrado ainda.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════ MODAL DE CONFIRMAÇÃO ═══════════════════════ -->
-  <div class="modal" id="modal-confirmar" hidden role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
-    <div class="modal-conteudo">
-      <h3 id="modal-titulo">Confirmar pedido</h3>
-      <ul id="modal-itens" class="carrinho-lista"></ul>
-      <p><strong>Total a pagar: <span id="modal-total">R$ 0,00</span></strong></p>
-      <div class="acoes-etapa">
-        <button class="btn btn-limpar" id="modal-cancelar">Cancelar</button>
-        <button class="btn" id="modal-confirmar-btn">Confirmar e pagar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════ CARRINHO FLUTUANTE ════════════════════════ -->
-  <button class="carrinho-toggle" id="carrinho-toggle" hidden aria-label="Ver carrinho">
-    🛒 <span id="carrinho-badge" aria-live="polite">0</span>
-  </button>
-
-  <!-- ════════════════════════════ RODAPÉ ═══════════════════════════════════ -->
-  <footer class="site-footer">
-    <!--<section class="contato" aria-labelledby="contato-title">
-      <div class="container">
-        <div class="card">
-          <div class="box">
+    
+    <section id="contato"class="contato" aria-labelledby="contato-title">
+      <div class="contato-container">
+        <div class="contato-card">
+          <div class="contato-box">
             <h2 id="contato-title">Fale Conosco</h2>
             <form class="form" novalidate aria-describedby="form-help">
               <p id="form-help" class="muted">Os campos marcados com * são obrigatórios.</p>
@@ -282,7 +264,53 @@
           </div>
         </div>
       </div>
-    </section><br>  -->
+    </section><br>
+
+    
+    <!-- ════════════════════ HISTÓRICO DE PEDIDOS ════════════════════ -->
+  <section id="historico-section" class="historico" aria-label="Histórico de pedidos">
+    <div class="container">
+      <div class="historico-container">
+        <div class="historico-card">
+          <div class="historico-box">
+            <h2>📋 Histórico de pedidos</h2>
+            <div class="historico-acoes">
+              <button class="btn btn-secundario" id="btn-exportar-csv" hidden>⬇ Exportar CSV</button>
+              <button class="btn btn-perigo btn-limpar" id="btn-limpar-historico">🗑 Limpar histórico</button>
+            </div><br>
+            <div class="tabela-wrapper" id="historico-lista">
+              <p class="muted carrinho-vazio">Nenhum pedido registrado ainda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  </main>
+
+
+  <!-- ════════════════════════ MODAL DE CONFIRMAÇÃO ═══════════════════════ -->
+  <div class="modal" id="modal-confirmar" hidden role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal-conteudo">
+      <h3 id="modal-titulo">Confirmar pedido</h3>
+      <ul id="modal-itens" class="carrinho-lista"></ul>
+      <p><strong>Total a pagar: <span id="modal-total">R$ 0,00</span></strong></p>
+      <div class="acoes-etapa">
+        <button class="btn btn-limpar" id="modal-cancelar">Cancelar</button>
+        <button class="btn" id="modal-confirmar-btn">Confirmar e pagar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ CARRINHO FLUTUANTE ════════════════════════ -->
+  <button class="carrinho-toggle" id="carrinho-toggle" hidden aria-label="Ver carrinho">
+    🛒 <span id="carrinho-badge" aria-live="polite">0</span>
+  </button>
+
+  <!-- ════════════════════════════ RODAPÉ ═══════════════════════════════════ -->
+  <footer class="site-footer">
     <p>© <span id="ano"></span> AçaíZon. Projeto educacional — Feito por <strong>Script Sisters</strong> 🔗</p>
     <div class="social-links">
       <a href="https://www.instagram.com/luhpns/" class="social-icon"><i class="fab fa-instagram"></i></a>
