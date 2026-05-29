@@ -50,7 +50,7 @@ body {
 .beneficio-card {
   width: 250px;
   height: 195px;
-  background: rgba(248, 179, 4, 0.973);
+  background: var(--cor-superficie);
   padding: 3px 2px;
   backdrop-filter: blur(12px);
   border-radius: 30px;
