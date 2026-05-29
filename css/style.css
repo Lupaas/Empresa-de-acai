@@ -1,17 +1,11 @@
-/* Add as cores de cada conatiner */
-/* finalizar o footer */
-/* Se possivel, arrumar os beneficios para algo unico */
-/* Acresentar uma transição para aumentar a imagem no hero */
-/* mudar a cor dos botões */
-/* colocar um degrade no fundo */
-
-
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 /* === Tokens === */
 :root {
   --cor-primaria: rgb(112, 17, 71);
   --cor-primaria-escura: rgb(85, 14, 39);
-  --cor-fundo:rgb(68, 1, 84); /* verde rgb(179, 210, 54) */
+  --cor-fundo: rgb(68, 1, 84);
+  /* verde rgb(179, 210, 54) */
   --cor-superficie: #ffffff;
   --cor-texto: #1a1a1a;
   --cor-muted: #555;
@@ -19,6 +13,8 @@
   --raio: 20px;
   --sombra: 0 6px 20px rgba(85, 7, 39, 0.356);
   --max: 1100px;
+  --linha-divisoria: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.10);
 }
 
 * {
@@ -54,23 +50,29 @@ body {
 .beneficio-card {
   width: 250px;
   height: 195px;
-  background: var(--cor-superficie);
+  background: rgba(248, 179, 4, 0.973);
   padding: 3px 2px;
+  backdrop-filter: blur(12px);
   border-radius: 30px;
   text-align: center;
   margin-top: 26px;
 }
 
 .beneficio-card p {
-  font-size: 18px;
+  font-size: 17px;
   font-family: "Montserrat", inter, gotham, poppins, sans-serif;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
+  color: var(--cor-fundo);
 }
 
 .beneficio-card i {
   font-size: 1.7rem;
-  color: var(--cor-primaria-escura);
+  color: rgba(92, 14, 155, 0.658);
   margin-top: 0.6rem;
+}
+
+.beneficio-card h3 {
+  color: var(--cor-fundo);
 }
 
 /* CARDÁPIO */
@@ -84,6 +86,7 @@ body {
   height: 100%;
   background: var(--cor-superficie);
   border-radius: var(--raio);
+  backdrop-filter: blur(10px);
   padding: 1.5rem;
   margin-top: 26px;
 }
@@ -92,10 +95,16 @@ body {
   font-size: 18px;
   font-family: "Montserrat", inter, gotham, poppins, sans-serif;
   margin-bottom: 25px;
+  color: var(--cor-texto);
+}
+
+.cardapio-card h2 {
+  color: var(--cor-primaria);
+  margin-bottom: 15px;
 }
 
 /* ANUNCIO DE DESCONTO */
-.anuncio img{
+.anuncio img {
   width: 1060px;
   height: auto;
   object-fit: cover;
@@ -159,7 +168,8 @@ body {
 
 .sobre-card {
   background: var(--cor-superficie);
-  border: 1px solid var(--cor-borda);
+  border: 1px solid rgba(225, 225, 225, 0.08);
+  backdrop-filter: blur(10px);
   border-radius: var(--raio);
   padding: 1.25rem;
   box-shadow: var(--sombra);
@@ -184,10 +194,11 @@ body {
 }
 
 .contato-card {
-  width: 700px;
-  height: 590px;
+  width: 650px;
+  height: 520px;
   background: var(--cor-superficie);
   border-radius: var(--raio);
+  border: 1px solid var(--glass-border);
   padding: 1.5rem;
   margin-top: -170px;
 }
@@ -217,6 +228,7 @@ body {
   width: 100%;
   height: 100%;
   background: var(--cor-superficie);
+  border: 1px solid var(--glass-border);
   border-radius: var(--raio);
   padding: 1.5rem;
   margin-top: 130px;
@@ -234,7 +246,8 @@ body {
 
 /* === Header === */
 .site-header {
-  background: rgba(47, 1, 58, 0.75); /* Um pouco mais opaco para dar leitura */
+  background: rgba(47, 1, 58, 0.75);
+  /* Um pouco mais opaco para dar leitura */
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
@@ -249,8 +262,10 @@ body {
   width: 100%;
 }
 
-#sobre, #cardapio, #contato {
-  scroll-margin-top: 300px;
+#sobre,
+#cardapio,
+#contato {
+  scroll-margin-top: 280px;
 }
 
 .logo {
@@ -289,7 +304,8 @@ body {
   display: flex;
   align-items: center;
 }
-  /*background: linear-gradient(135deg, #2b003d, #6d0099);*/
+
+/*background: linear-gradient(135deg, #2b003d, #6d0099);*/
 
 
 .hero-bg {
@@ -300,6 +316,11 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  transition: transform 0.7s ease;
+}
+
+.hero-box:hover .hero-bg {
+  transform: scale(1.08);
 }
 
 .hero-texto h1,
@@ -330,18 +351,30 @@ body {
 }
 
 /* === Seções === */
-.section {
-  padding: 2.5rem 0;
+section {
+  position: relative;
 }
 
-.section--alt {
-  background: var(--cor-superficie);
+.section #beneficios::after,
+ #cardapio::after,
+ #sobre::after, 
+ #contato::after,
+ #anuncio::after,
+ #historico-section::after {
+  content: "";
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 1px;
+  background: var(--linha-divisoria);
 }
 
 .section h2 {
   font-size: 1.6rem;
   margin: 0 0 1.5rem;
-  color: var(--cor-primaria-escura);
+  color: #ffffff;
 }
 
 .center {
@@ -349,6 +382,19 @@ body {
 }
 
 /* === Cards do cardápio === */
+.beneficio-card,
+.card,
+.sobre-card {
+  transition: 0.3s ease;
+}
+
+.beneficio-card:hover,
+.card:hover,
+.sobre-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 .cards {
   list-style: none;
   padding: 0;
@@ -359,8 +405,9 @@ body {
 }
 
 .card {
-  background: var(--cor-superficie);
-  border: 1px solid var(--cor-borda);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
   border-radius: var(--raio);
   padding: 1.25rem;
   box-shadow: var(--sombra);
@@ -463,6 +510,7 @@ body {
 .btn-cardapio {
   background: rgb(253, 182, 2);
   color: #490a6e;
+  transition: 0.5s;
 }
 
 .btn:hover {
@@ -813,6 +861,46 @@ body {
   text-align: center;
   margin-top: 40px;
 }
+
+/* PAGAMENTOS */
+.footer-pagamentos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -30px;
+}
+
+.pagamentos {
+  padding: 25px;
+  margin: 0;
+}
+
+.pagamentos-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pagamentos h2 {
+  font-size: 25px;
+  color: var(--cor-superficie);
+}
+
+.pagamentos-icon {
+  display: flex;
+  gap: 18px;
+  margin-top: -10px;
+  font-size: 28px;
+}
+
+.pagamentos-icon i {
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.pagamentos-icon i:hover {
+  color: var(--cor-primaria);
+}
+
 
 .social-links {
   display: flex;
